@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -22,9 +23,11 @@ const Home = () => {
         transition={{ duration: 0.8 }}
         className="mt-10"
       >
-        <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 hover:scale-105 transition">
-          Submit Feedback
-        </button>
+        <Link to="/register">
+          <button className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 hover:scale-105 transition">
+            Submit Feedback
+          </button>
+        </Link>
       </motion.div>
     </div>
   );

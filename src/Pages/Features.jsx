@@ -1,90 +1,67 @@
-import { motion } from "framer-motion";
-import { FiShield, FiMessageSquare, FiStar, FiBell } from "react-icons/fi";
+import { FiMessageSquare, FiShield, FiStar, FiUsers } from "react-icons/fi";
 
 const Features = () => {
-  const features = [
+  const items = [
     {
-      icon: <FiMessageSquare size={50} />,
-      title: "Smart Feedback System",
-      desc: "Collect structured feedback with a beautiful UI & instant responsiveness.",
+      icon: <FiMessageSquare size={32} />,
+      title: "Easy Feedback",
+      desc: "Submit feedback quickly with a clean and simple interface.",
     },
     {
-      icon: <FiShield size={50} />,
-      title: "Role Based Security",
-      desc: "Admin & User dashboards separated with encrypted authentication.",
+      icon: <FiShield size={32} />,
+      title: "Secure Access",
+      desc: "Your data stays protected with proper role-based authentication.",
     },
     {
-      icon: <FiStar size={50} />,
-      title: "Ratings & Reviews",
-      desc: "Interactive rating widgets & sentiment-based auto categorization.",
+      icon: <FiStar size={32} />,
+      title: "Ratings Feature",
+      desc: "Rate services to help others understand service quality.",
     },
     {
-      icon: <FiBell size={50} />,
-      title: "Real-time Alerts",
-      desc: "Admins get real-time updates for new feedback & complaints.",
+      icon: <FiUsers size={32} />,
+      title: "User Friendly",
+      desc: "Simple navigation and a smooth overall user experience.",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 px-6 py-24 text-white">
+    <div className="min-h-screen bg-gray-100 text-gray-900 px-6 py-16">
       
       {/* Heading */}
-      <motion.h1
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7 }}
-        className="text-5xl font-extrabold text-center mb-16"
-      >
-        Our <span className="text-purple-400">Features</span>
-      </motion.h1>
+      <h1 className="text-4xl font-bold text-center mb-14 mt-10">
+        Our <span className="text-purple-600">Features</span>
+      </h1>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto">
-        {features.map((f, i) => (
-          <motion.div
+      {/* Properly Centered Grid */}
+      <div className="max-w-6xl mx-auto grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        
+        {items.map((box, i) => (
+          <div
             key={i}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: i * 0.15 }}
-            whileHover={{ scale: 1.08, rotate: 1 }}
             className="
-              bg-white/10 
-              backdrop-blur-xl 
-              rounded-3xl 
+              bg-white 
+              shadow-md
               p-8 
-              shadow-xl 
-              border border-white/10 
-              hover:border-purple-400 
+              rounded-xl 
+              border border-gray-200
+              hover:shadow-xl 
               transition-all 
-              cursor-pointer
-              relative
-              overflow-hidden
+              duration-300
+              hover:-translate-y-2
+              flex 
+              flex-col
+              items-center
+              text-center
             "
           >
-            {/* Glowing animated border */}
-            <motion.div
-              className="absolute inset-0 border-2 border-purple-500 rounded-3xl opacity-0"
-              initial={{ opacity: 0 }}
-              whileHover={{ opacity: 0.4 }}
-              transition={{ duration: 0.4 }}
-            ></motion.div>
+            <div className="text-purple-600 mb-4">{box.icon}</div>
 
-            {/* Icon animation */}
-            <motion.div
-              initial={{ scale: 0.7 }}
-              whileHover={{ scale: 1.1 }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="text-purple-400 flex justify-center mb-4 drop-shadow-[0_0_10px_rgba(168,85,247,0.6)]"
-            >
-              {f.icon}
-            </motion.div>
+            <h2 className="text-xl font-semibold mb-2">{box.title}</h2>
 
-            <h2 className="text-2xl font-bold text-center mb-2">{f.title}</h2>
-            <p className="text-gray-300 text-center leading-relaxed">
-              {f.desc}
-            </p>
-          </motion.div>
+            <p className="text-gray-600 text-sm">{box.desc}</p>
+          </div>
         ))}
+
       </div>
     </div>
   );
