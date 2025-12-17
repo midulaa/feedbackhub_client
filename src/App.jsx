@@ -8,6 +8,7 @@ import Features from "./Pages/Features";
 import Contact from "./Pages/Contact";
 import UserDashBoard from "./DashBoard/UserDashBoard";
 import AdminDashBoard from "./DashBoard/AdminDashBoard";
+import { ThemeProvider } from "./contexts/ThemeContext";
 
 const Layout = () => {
   const location = useLocation();
@@ -36,9 +37,11 @@ const Layout = () => {
 
 const App = () => {
   return (
-    <Router>
-      <Layout/>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <Layout/>
+      </Router>
+    </ThemeProvider>
   );
 };
 
