@@ -159,9 +159,9 @@ function AdminOverview() {
   const fetchData = async () => {
     try {
       const [usersRes, feedbacksRes, complaintsRes] = await Promise.all([
-        fetch('http://localhost:5000/api/users'),
-        fetch('http://localhost:5000/api/feedback'),
-        fetch('http://localhost:5000/api/complaint')
+        fetch('https://feedbackhub-server-etyk.onrender.com/api/users'),
+        fetch('https://feedbackhub-server-etyk.onrender.com/api/feedback'),
+        fetch('https://feedbackhub-server-etyk.onrender.com/api/complaint')
       ]);
       
       const usersData = await usersRes.json();
@@ -396,7 +396,7 @@ function AdminUsers() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/users')
+    fetch('https://feedbackhub-server-etyk.onrender.com/api/users')
       .then(res => res.json())
       .then(data => setUsers(data))
       .catch(err => console.error(err))
@@ -436,7 +436,7 @@ function AdminFeedbacks() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/feedback')
+    fetch('https://feedbackhub-server-etyk.onrender.com/api/feedback')
       .then(res => res.json())
       .then(data => {
         const deletedIds = JSON.parse(localStorage.getItem('deleted_feedbacks') || '[]');
@@ -493,7 +493,7 @@ function AdminComplaints() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/complaint')
+    fetch('https://feedbackhub-server-etyk.onrender.com/api/complaint')
       .then(res => res.json())
       .then(data => setComplaints(data))
       .catch(err => console.error(err))
@@ -502,7 +502,7 @@ function AdminComplaints() {
 
   const updateStatus = async (id, status) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/complaint/${id}/status`, {
+      const response = await fetch(`https://feedbackhub-server-etyk.onrender.com/api/complaint/${id}/status`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })
@@ -613,9 +613,9 @@ function AdminAnalytics() {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:5000/api/users'),
-      fetch('http://localhost:5000/api/feedback'),
-      fetch('http://localhost:5000/api/complaint')
+      fetch('https://feedbackhub-server-etyk.onrender.com/api/users'),
+      fetch('https://feedbackhub-server-etyk.onrender.com/api/feedback'),
+      fetch('https://feedbackhub-server-etyk.onrender.com/api/complaint')
     ])
     .then(async ([usersRes, feedbacksRes, complaintsRes]) => {
       const users = await usersRes.json();

@@ -96,8 +96,8 @@ function UserOverview() {
       }
 
       const [feedbacksRes, complaintsRes] = await Promise.all([
-        fetch(`http://localhost:5000/api/feedback/user/${userData.id}`),
-        fetch(`http://localhost:5000/api/complaint/user/${userData.id}`)
+        fetch(`https://feedbackhub-server-etyk.onrender.com/api/feedback/user/${userData.id}`),
+        fetch(`https://feedbackhub-server-etyk.onrender.com/api/complaint/user/${userData.id}`)
       ]);
       
       const feedbacksData = await feedbacksRes.json();
@@ -177,7 +177,7 @@ function SubmitFeedback() {
     
     try {
       const userData = JSON.parse(localStorage.getItem('user') || '{}');
-      const response = await fetch('http://localhost:5000/api/feedback', {
+      const response = await fetch('https://feedbackhub-server-etyk.onrender.com/api/feedback', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -259,7 +259,7 @@ function SubmitComplaint() {
     
     try {
       const userData = JSON.parse(localStorage.getItem('user') || '{}');
-      const response = await fetch('http://localhost:5000/api/complaint', {
+      const response = await fetch('https://feedbackhub-server-etyk.onrender.com/api/complaint', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -368,7 +368,7 @@ function MyFeedbacks() {
   const fetchFeedbacks = async () => {
     try {
       const userData = JSON.parse(localStorage.getItem('user') || '{}');
-      const response = await fetch(`http://localhost:5000/api/feedback/user/${userData.id}`);
+      const response = await fetch(`https://feedbackhub-server-etyk.onrender.com/api/feedback/user/${userData.id}`);
       const data = await response.json();
       setFeedbacks(data);
     } catch (error) {
@@ -423,7 +423,7 @@ function MyComplaints() {
         return;
       }
       
-      const response = await fetch(`http://localhost:5000/api/complaint/user/${userData.id}`);
+      const response = await fetch(`https://feedbackhub-server-etyk.onrender.com/api/complaint/user/${userData.id}`);
       
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}`);
